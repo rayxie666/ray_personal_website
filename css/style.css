@@ -380,6 +380,32 @@ main { position: relative; z-index: 1; }
   border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
+/* 精选 / 真实落地项目：徽章 + 数据块 */
+.project-card.featured {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent), 0 14px 44px rgba(0, 0, 0, 0.45);
+}
+.project-badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.5px;
+  padding: 4px 11px; border-radius: 999px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.project-stats {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  margin: 2px 0 18px; padding-top: 16px;
+  border-top: 1px solid var(--card-border);
+}
+.project-stats div { display: flex; flex-direction: column; line-height: 1.25; }
+.project-stats b {
+  font-size: 1.25rem; font-weight: 800;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.project-stats small { font-size: 0.72rem; color: var(--text-dim); margin-top: 2px; }
+
 /* ---------- 联系 ---------- */
 .contact-lead { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 40px; }
 .contact-actions { margin-bottom: 44px; }
