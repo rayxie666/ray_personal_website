@@ -21,7 +21,7 @@
 /* ---------- 打字机 ---------- */
 (() => {
   const el = document.getElementById('typing');
-  const words = ['全栈开发工程师', '创意编程爱好者', 'Three.js 玩家', '着色器调参侠', '终身学习者'];
+  const words = ['后端开发工程师', 'AI Agent 构建者', '机器学习工程师', 'LLM 应用开发者', '终身学习者'];
   let wi = 0, ci = 0, deleting = false;
 
   function tick() {
