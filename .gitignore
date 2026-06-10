@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# 编辑器 / 本地工具
+.claude/
+.vscode/
+.idea/
+
+# 日志
+*.log

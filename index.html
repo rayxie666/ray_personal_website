@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ray Xie · 个人网站</title>
+  <meta name="description" content="Ray Xie 的个人网站 — 全栈开发者 · 创意编程爱好者，带交互式 3D 水波特效" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- 加载动画 -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p>正在汇聚水波…</p>
+    </div>
+  </div>
+
+  <!-- 3D 水波背景 -->
+  <canvas id="water-canvas" aria-hidden="true"></canvas>
+
+  <!-- 导航栏 -->
+  <nav id="navbar">
+    <a class="logo" href="#hero">Ray<span>.</span>Xie</a>
+    <button id="nav-toggle" aria-label="打开菜单"><span></span><span></span><span></span></button>
+    <ul id="nav-links">
+      <li><a href="#hero">首页</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#projects">作品</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 首屏 -->
+    <section id="hero">
+      <div class="hero-content reveal">
+        <p class="hero-greeting">你好，我是</p>
+        <h1 class="hero-name">Ray Xie</h1>
+        <p class="hero-typing">我是一名 <span id="typing"></span><span class="cursor">|</span></p>
+        <p class="hero-desc">热爱用代码雕刻光影与交互，在浏览器里搭建会呼吸的世界。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">查看作品</a>
+          <a class="btn btn-ghost" href="#contact">联系我</a>
+        </div>
+        <p class="hero-hint">🌊 移动鼠标，在水面留下你的涟漪</p>
+      </div>
+      <a class="scroll-indicator" href="#about" aria-label="向下滚动">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="panel">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="section-num">01</span>关于我</h2>
+        <div class="about-grid">
+          <div class="about-avatar reveal">
+            <div class="avatar-ring">
+              <div class="avatar">RX</div>
+            </div>
+          </div>
+          <div class="about-text reveal">
+            <p>我是一名<strong>全栈开发者</strong>，痴迷于图形学与创意编程。白天写工程化的业务代码，夜里用 WebGL 与着色器折腾各种发光的小玩意 —— 比如你身后这片水。</p>
+            <p>我相信优秀的产品是<strong>工程</strong>与<strong>美学</strong>的交点：代码要经得起 review，界面要经得起凝视。</p>
+            <div class="stats">
+              <div class="stat"><span class="stat-num" data-target="5">0</span><span class="stat-suffix">年+</span><p>开发经验</p></div>
+              <div class="stat"><span class="stat-num" data-target="30">0</span><span class="stat-suffix">个+</span><p>完成项目</p></div>
+              <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-suffix">项+</span><p>技术栈</p></div>
+              <div class="stat"><span class="stat-num">∞</span><span class="stat-suffix"></span><p>好奇心</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="panel">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="section-num">02</span>技能图谱</h2>
+        <div class="skills-grid">
+          <div class="skill-group reveal">
+            <h3>前端 / 图形</h3>
+            <div class="skill"><div class="skill-head"><span>JavaScript / TypeScript</span><em>92%</em></div><div class="bar"><div class="bar-fill" data-level="92"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>Vue / React</span><em>88%</em></div><div class="bar"><div class="bar-fill" data-level="88"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>Three.js / WebGL / GLSL</span><em>82%</em></div><div class="bar"><div class="bar-fill" data-level="82"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>CSS / 动效设计</span><em>85%</em></div><div class="bar"><div class="bar-fill" data-level="85"></div></div></div>
+          </div>
+          <div class="skill-group reveal">
+            <h3>后端 / 工程</h3>
+            <div class="skill"><div class="skill-head"><span>Node.js</span><em>86%</em></div><div class="bar"><div class="bar-fill" data-level="86"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>Python</span><em>80%</em></div><div class="bar"><div class="bar-fill" data-level="80"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>数据库 / SQL</span><em>78%</em></div><div class="bar"><div class="bar-fill" data-level="78"></div></div></div>
+            <div class="skill"><div class="skill-head"><span>DevOps / CI</span><em>72%</em></div><div class="bar"><div class="bar-fill" data-level="72"></div></div></div>
+          </div>
+        </div>
+        <div class="tags reveal">
+          <span>Vite</span><span>Tailwind</span><span>Pinia</span><span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>WebGPU</span><span>Blender</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品 -->
+    <section id="projects" class="panel">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="section-num">03</span>精选作品</h2>
+        <div class="projects-grid">
+          <article class="project-card reveal" style="--accent:#22d3ee">
+            <div class="project-icon">📊</div>
+            <h3>智能数据可视化平台</h3>
+            <p>基于 Vue3 + ECharts + WebGL 的大屏可视化系统，支持百万级数据点实时渲染。</p>
+            <div class="project-tags"><span>Vue3</span><span>WebGL</span><span>ECharts</span></div>
+          </article>
+          <article class="project-card reveal" style="--accent:#818cf8">
+            <div class="project-icon">🏛️</div>
+            <h3>3D 在线展厅</h3>
+            <p>Three.js 打造的虚拟展览馆，支持第一人称漫游、烘焙光照与热点交互。</p>
+            <div class="project-tags"><span>Three.js</span><span>GLSL</span><span>Blender</span></div>
+          </article>
+          <article class="project-card reveal" style="--accent:#f472b6">
+            <div class="project-icon">✏️</div>
+            <h3>实时协作白板</h3>
+            <p>基于 CRDT 与 WebSocket 的多人协作白板，毫秒级同步，离线可用。</p>
+            <div class="project-tags"><span>CRDT</span><span>WebSocket</span><span>Canvas</span></div>
+          </article>
+          <article class="project-card reveal" style="--accent:#34d399">
+            <div class="project-icon">🤖</div>
+            <h3>AI 对话助手</h3>
+            <p>接入 Claude API 的智能助手，支持流式输出、工具调用与多轮上下文。</p>
+            <div class="project-tags"><span>Claude API</span><span>Node.js</span><span>SSE</span></div>
+          </article>
+          <article class="project-card reveal" style="--accent:#fbbf24">
+            <div class="project-icon">📝</div>
+            <h3>极简博客引擎</h3>
+            <p>Markdown 驱动的静态博客生成器，秒级构建，自带暗色主题与全文搜索。</p>
+            <div class="project-tags"><span>Node.js</span><span>Markdown</span><span>SSG</span></div>
+          </article>
+          <article class="project-card reveal" style="--accent:#60a5fa">
+            <div class="project-icon">🧩</div>
+            <h3>开源组件库</h3>
+            <p>一套注重动效细节的 Vue 组件库，完整的文档站与可视化测试。</p>
+            <div class="project-tags"><span>Vue3</span><span>TypeScript</span><span>Vitest</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系 -->
+    <section id="contact" class="panel">
+      <div class="container narrow">
+        <h2 class="section-title reveal"><span class="section-num">04</span>保持联系</h2>
+        <p class="contact-lead reveal">无论是合作邀约、技术交流，还是单纯打个招呼 —— 我的邮箱永远向你敞开。</p>
+        <div class="contact-actions reveal">
+          <a class="btn btn-primary btn-lg" href="mailto:xiezherui99@gmail.com">✉️ xiezherui99@gmail.com</a>
+        </div>
+        <div class="socials reveal">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.66.41.36.78 1.06.78 2.14 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </a>
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+          </a>
+          <a href="https://juejin.cn/" target="_blank" rel="noopener" aria-label="掘金">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.4 9.6 4.32 12 6.24l2.4-1.92L12 2.4zM5.07 7.93 12 13.47l6.93-5.54 2.07 1.66L12 17.18 1 9.59l4.07-1.66zm0 0"/><path d="M12 9.6 8.4 6.72l-2.07 1.66L12 12.93l5.67-4.55L15.6 6.72 12 9.6z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Ray Xie · 用 ❤️ 与 Three.js 打造 · 水面之下皆是着色器</p>
+  </footer>
+
+  <button id="back-top" aria-label="回到顶部">↑</button>
+
+  <script type="module" src="js/water.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
