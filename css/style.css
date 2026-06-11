@@ -386,6 +386,15 @@ main { position: relative; z-index: 1; }
 }
 .project-card h3 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 700; }
 .project-card p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 18px; }
+.project-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--accent); text-decoration: none;
+  opacity: 0.65; margin: 6px 0 14px;
+  transition: opacity 0.25s;
+}
+.project-link:hover { opacity: 1; }
+
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .project-tags span {
   font-size: 0.75rem; padding: 4px 12px; border-radius: 999px;
