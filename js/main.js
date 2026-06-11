@@ -2,7 +2,7 @@
    页面交互：加载器 / 打字机 / 导航 / 入场动画 / 计数器 / 卡片跟光
    ============================================================ */
 
-/* ---------- 加载器：水波就绪或超时后淡出 ---------- */
+/* ---------- 加载器 ---------- */
 (() => {
   const loader = document.getElementById('loader');
   const start = performance.now();
@@ -10,19 +10,19 @@
   const hide = () => {
     if (done) return;
     done = true;
-    // 至少展示 600ms，避免闪烁
     const wait = Math.max(0, 600 - (performance.now() - start));
     setTimeout(() => loader.classList.add('hidden'), wait);
   };
   window.addEventListener('water-ready', hide, { once: true });
-  setTimeout(hide, 3500); // 兜底：CDN 失败也不能卡住页面
+  setTimeout(hide, 3500);
 })();
 
 /* ---------- 打字机 ---------- */
 (() => {
   const el = document.getElementById('typing');
-  const words = ['后端开发工程师', 'AI Agent 构建者', '机器学习工程师', 'LLM 应用开发者', '终身学习者'];
-  let wi = 0, ci = 0, deleting = false;
+  let words = (window.i18n && window.i18n.getTypingWords()) ||
+    ['Backend Engineer', 'AI Agent Builder', 'ML Engineer', 'LLM App Developer', 'Lifelong Learner'];
+  let wi = 0, ci = 0, deleting = false, timer = null;
 
   function tick() {
     const word = words[wi];
@@ -31,9 +31,17 @@
     let delay = deleting ? 50 : 110;
     if (!deleting && ci === word.length) { delay = 1800; deleting = true; }
     else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 400; }
-    setTimeout(tick, delay);
+    timer = setTimeout(tick, delay);
   }
   tick();
+
+  window.addEventListener('langchange', (e) => {
+    words = e.detail.words;
+    wi = 0; ci = 0; deleting = false;
+    clearTimeout(timer);
+    el.textContent = '';
+    tick();
+  });
 })();
 
 /* ---------- 导航：滚动收起 / 高亮当前版块 / 移动端菜单 ---------- */
@@ -53,7 +61,6 @@
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.addEventListener('click', () => links.classList.remove('open'));
 
-  // 当前版块高亮
   const sections = [...document.querySelectorAll('section[id]')];
   const navAnchors = [...links.querySelectorAll('a')];
   const spy = new IntersectionObserver((entries) => {
@@ -74,12 +81,10 @@
       const el = entry.target;
       el.classList.add('visible');
 
-      // 技能条
       el.querySelectorAll('.bar-fill').forEach((bar) => {
         bar.style.width = `${bar.dataset.level}%`;
       });
 
-      // 数字滚动
       el.querySelectorAll('.stat-num[data-target]').forEach((num) => {
         const target = +num.dataset.target;
         const t0 = performance.now();
@@ -127,6 +132,5 @@
     btn.classList.toggle('show', window.scrollY > 600);
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

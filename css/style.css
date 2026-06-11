@@ -74,7 +74,7 @@ body {
 /* ---------- 导航 ---------- */
 #navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; gap: 8px;
   padding: 18px clamp(20px, 5vw, 64px);
   background: rgba(5, 8, 22, 0.35);
   backdrop-filter: blur(16px) saturate(1.4);
@@ -88,6 +88,7 @@ body {
 .logo {
   font-weight: 800; font-size: 1.35rem; letter-spacing: 0.5px;
   color: var(--text); text-decoration: none;
+  margin-right: auto;
 }
 .logo span { color: var(--cyan); }
 
@@ -111,6 +112,19 @@ body {
   transition: transform 0.3s ease;
 }
 #nav-links a:hover::after, #nav-links a.active::after { transform: scaleX(1); }
+
+#lang-toggle {
+  padding: 7px 16px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dim); font-size: 0.88rem; font-weight: 600;
+  font-family: var(--font); cursor: pointer; white-space: nowrap;
+  transition: all 0.3s;
+}
+#lang-toggle:hover {
+  color: var(--cyan); border-color: var(--cyan);
+  background: rgba(34, 211, 238, 0.08);
+}
 
 #nav-toggle { display: none; background: none; border: none; cursor: pointer; }
 #nav-toggle span {
@@ -460,6 +474,7 @@ footer {
 }
 
 @media (max-width: 640px) {
+  #lang-toggle { padding: 6px 12px; font-size: 0.82rem; }
   #nav-toggle { display: block; }
   #nav-links {
     position: fixed; top: 64px; right: 16px;

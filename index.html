@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ray Xie · 个人网站</title>
-  <meta name="description" content="Ray Xie 的个人网站 — 后端 & AI 工程师 · 大语言模型 / 智能体 / 机器学习，带交互式 3D 水波特效" />
+  <title>Ray Xie · Personal Website</title>
+  <meta name="description" content="Ray Xie — Backend & AI Engineer specializing in LLMs, AI Agents, and Machine Learning, with interactive 3D water effects" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,55 +20,56 @@
 </head>
 <body>
 
-  <!-- 加载动画 -->
+  <!-- loader -->
   <div id="loader">
     <div class="loader-inner">
       <div class="loader-wave">
         <span></span><span></span><span></span><span></span><span></span>
       </div>
-      <p>正在汇聚水波…</p>
+      <p data-i18n="loader.text">Gathering ripples…</p>
     </div>
   </div>
 
-  <!-- 3D 水波背景 -->
+  <!-- 3D water canvas -->
   <canvas id="water-canvas" aria-hidden="true"></canvas>
 
-  <!-- 导航栏 -->
+  <!-- navbar -->
   <nav id="navbar">
     <a class="logo" href="#hero">Ray<span>.</span>Xie</a>
-    <button id="nav-toggle" aria-label="打开菜单"><span></span><span></span><span></span></button>
     <ul id="nav-links">
-      <li><a href="#hero">首页</a></li>
-      <li><a href="#about">关于</a></li>
-      <li><a href="#skills">技能</a></li>
-      <li><a href="#projects">作品</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li><a href="#hero"     data-i18n="nav.home">Home</a></li>
+      <li><a href="#about"    data-i18n="nav.about">About</a></li>
+      <li><a href="#skills"   data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#contact"  data-i18n="nav.contact">Contact</a></li>
     </ul>
+    <button id="lang-toggle" aria-label="Switch language">中文</button>
+    <button id="nav-toggle"  aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
 
   <main>
-    <!-- 首屏 -->
+    <!-- hero -->
     <section id="hero">
       <div class="hero-content reveal">
-        <p class="hero-greeting">你好，我是</p>
+        <p class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</p>
         <h1 class="hero-name">Ray Xie</h1>
-        <p class="hero-typing">我是一名 <span id="typing"></span><span class="cursor">|</span></p>
-        <p class="hero-desc">专注后端架构与 AI 工程，用大语言模型和智能体把复杂系统打磨得既聪明又可靠。</p>
+        <p class="hero-typing"><span data-i18n="hero.typing.prefix">I'm a </span><span id="typing"></span><span class="cursor">|</span></p>
+        <p class="hero-desc" data-i18n="hero.desc">Focused on backend architecture & AI engineering — building systems that are both intelligent and reliable with LLMs and autonomous agents.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#projects">查看作品</a>
-          <a class="btn btn-ghost" href="#contact">联系我</a>
+          <a class="btn btn-primary" href="#projects" data-i18n="hero.cta.projects">View Work</a>
+          <a class="btn btn-ghost"   href="#contact"  data-i18n="hero.cta.contact">Contact Me</a>
         </div>
-        <p class="hero-hint">🌊 移动鼠标，在水面留下你的涟漪</p>
+        <p class="hero-hint" data-i18n="hero.hint">🌊 Move your mouse, leave ripples on the water</p>
       </div>
-      <a class="scroll-indicator" href="#about" aria-label="向下滚动">
+      <a class="scroll-indicator" href="#about" aria-label="Scroll down">
         <span class="mouse"><span class="wheel"></span></span>
       </a>
     </section>
 
-    <!-- 关于 -->
+    <!-- about -->
     <section id="about" class="panel">
       <div class="container">
-        <h2 class="section-title reveal"><span class="section-num">01</span>关于我</h2>
+        <h2 class="section-title reveal"><span class="section-num">01</span><span data-i18n="about.title">About Me</span></h2>
         <div class="about-grid">
           <div class="about-avatar reveal">
             <div class="avatar-ring">
@@ -76,37 +77,37 @@
             </div>
           </div>
           <div class="about-text reveal">
-            <p>我是一名<strong>后端 &amp; AI 工程师</strong>，专注于大语言模型应用、智能体（Agent）系统与机器学习工程。白天设计高并发的服务与数据管线，夜里训练模型、编排会自己调用工具的智能体 —— 顺手也用着色器写了你身后这片水。</p>
-            <p>我相信优秀的 AI 产品是<strong>工程</strong>与<strong>智能</strong>的交点：模型要落得了地，系统要扛得住量，代码要经得起 review。</p>
+            <p data-i18n-html="about.p1">I'm a <strong>Backend &amp; AI Engineer</strong> focused on LLM applications, intelligent agent systems, and machine learning engineering. By day I design high-throughput services and data pipelines; by night I train models and orchestrate agents that call their own tools — and occasionally write shaders for the water behind you.</p>
+            <p data-i18n-html="about.p2">I believe great AI products live at the intersection of <strong>engineering</strong> and <strong>intelligence</strong>: models must be deployable, systems must scale, and code must survive code review.</p>
             <div class="stats">
-              <div class="stat"><span class="stat-num" data-target="5">0</span><span class="stat-suffix">年+</span><p>开发经验</p></div>
-              <div class="stat"><span class="stat-num" data-target="30">0</span><span class="stat-suffix">个+</span><p>完成项目</p></div>
-              <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-suffix">项+</span><p>技术栈</p></div>
-              <div class="stat"><span class="stat-num">∞</span><span class="stat-suffix"></span><p>好奇心</p></div>
+              <div class="stat"><span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span><p data-i18n="stat.experience">Years Exp.</p></div>
+              <div class="stat"><span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span><p data-i18n="stat.projects">Projects</p></div>
+              <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-suffix">+</span><p data-i18n="stat.stack">Tech Stacks</p></div>
+              <div class="stat"><span class="stat-num">∞</span><span class="stat-suffix"></span><p data-i18n="stat.curiosity">Curiosity</p></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 技能 -->
+    <!-- skills -->
     <section id="skills" class="panel">
       <div class="container">
-        <h2 class="section-title reveal"><span class="section-num">02</span>技能图谱</h2>
+        <h2 class="section-title reveal"><span class="section-num">02</span><span data-i18n="skills.title">Skill Map</span></h2>
         <div class="skills-grid">
           <div class="skill-group reveal">
-            <h3>AI / 机器学习</h3>
-            <div class="skill"><div class="skill-head"><span>大语言模型 / Prompt 工程</span><em>92%</em></div><div class="bar"><div class="bar-fill" data-level="92"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>AI Agent 编排 / 工具调用</span><em>89%</em></div><div class="bar"><div class="bar-fill" data-level="89"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>RAG / 向量检索</span><em>86%</em></div><div class="bar"><div class="bar-fill" data-level="86"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>PyTorch / 深度学习</span><em>82%</em></div><div class="bar"><div class="bar-fill" data-level="82"></div></div></div>
+            <h3 data-i18n="skills.group1">AI / Machine Learning</h3>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.llm">LLM / Prompt Engineering</span><em>92%</em></div><div class="bar"><div class="bar-fill" data-level="92"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.agent">AI Agent Orchestration</span><em>89%</em></div><div class="bar"><div class="bar-fill" data-level="89"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.rag">RAG / Vector Search</span><em>86%</em></div><div class="bar"><div class="bar-fill" data-level="86"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.pytorch">PyTorch / Deep Learning</span><em>82%</em></div><div class="bar"><div class="bar-fill" data-level="82"></div></div></div>
           </div>
           <div class="skill-group reveal">
-            <h3>后端 / 工程</h3>
-            <div class="skill"><div class="skill-head"><span>Python / FastAPI</span><em>90%</em></div><div class="bar"><div class="bar-fill" data-level="90"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>Node.js / Go</span><em>84%</em></div><div class="bar"><div class="bar-fill" data-level="84"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>数据库 / 向量数据库</span><em>85%</em></div><div class="bar"><div class="bar-fill" data-level="85"></div></div></div>
-            <div class="skill"><div class="skill-head"><span>微服务 / 云原生 / DevOps</span><em>80%</em></div><div class="bar"><div class="bar-fill" data-level="80"></div></div></div>
+            <h3 data-i18n="skills.group2">Backend / Engineering</h3>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.python">Python / FastAPI</span><em>90%</em></div><div class="bar"><div class="bar-fill" data-level="90"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.node">Node.js / Go</span><em>84%</em></div><div class="bar"><div class="bar-fill" data-level="84"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.db">Database / Vector DB</span><em>85%</em></div><div class="bar"><div class="bar-fill" data-level="85"></div></div></div>
+            <div class="skill"><div class="skill-head"><span data-i18n="skill.devops">Microservices / Cloud / DevOps</span><em>80%</em></div><div class="bar"><div class="bar-fill" data-level="80"></div></div></div>
           </div>
         </div>
         <div class="tags reveal">
@@ -115,61 +116,61 @@
       </div>
     </section>
 
-    <!-- 作品 -->
+    <!-- projects -->
     <section id="projects" class="panel">
       <div class="container">
-        <h2 class="section-title reveal"><span class="section-num">03</span>精选作品</h2>
+        <h2 class="section-title reveal"><span class="section-num">03</span><span data-i18n="projects.title">Selected Work</span></h2>
         <div class="projects-grid">
           <article class="project-card featured reveal" style="--accent:#22d3ee">
             <div class="project-icon">🤖</div>
-            <h3>团队赋能 AI Agent</h3>
-            <p>基于 OpenCode 自研、可对接任意大模型的企业内部智能体。打通内部知识问答、工作流自动化、研发提效与数据分析，成为团队随叫随到的「AI 同事」。</p>
+            <h3 data-i18n="project1.title">Team Empowerment AI Agent</h3>
+            <p data-i18n="project1.desc">An enterprise internal agent built on OpenCode, compatible with any LLM. Connects knowledge Q&amp;A, workflow automation, dev productivity, and data analytics — the team's always-on "AI colleague".</p>
             <div class="project-stats">
-              <div><b>5</b><small>团队在用</small></div>
-              <div><b>40%</b><small>日常提效</small></div>
-              <div><b>10+</b><small>接入系统</small></div>
+              <div><b>5</b><small data-i18n="project1.stat1">Teams Using</small></div>
+              <div><b>40%</b><small data-i18n="project1.stat2">Efficiency Gain</small></div>
+              <div><b>10+</b><small data-i18n="project1.stat3">Integrations</small></div>
             </div>
-            <div class="project-tags"><span>OpenCode</span><span>多 LLM</span><span>Agent</span></div>
+            <div class="project-tags"><span>OpenCode</span><span>Multi-LLM</span><span>Agent</span></div>
           </article>
           <article class="project-card reveal" style="--accent:#818cf8">
             <div class="project-icon">📚</div>
-            <h3>企业级 RAG 知识库</h3>
-            <p>结合向量检索与重排序的检索增强问答系统，毫秒级召回千万级文档，回答可溯源、有效抑制幻觉。</p>
+            <h3 data-i18n="project2.title">Enterprise RAG Knowledge Base</h3>
+            <p data-i18n="project2.desc">A retrieval-augmented Q&amp;A system combining vector search and reranking. Sub-second recall over millions of documents, with traceable, hallucination-resistant answers.</p>
             <div class="project-tags"><span>RAG</span><span>pgvector</span><span>Rerank</span></div>
           </article>
           <article class="project-card reveal" style="--accent:#f472b6">
             <div class="project-icon">⚡</div>
-            <h3>LLM 推理网关</h3>
-            <p>统一多家大模型的高可用推理网关，支持流式输出、负载均衡、限流与成本监控，日均处理百万级请求。</p>
+            <h3 data-i18n="project3.title">LLM Inference Gateway</h3>
+            <p data-i18n="project3.desc">A high-availability gateway unifying multiple LLM providers — streaming output, load balancing, rate limiting, and cost monitoring. Handles millions of requests daily.</p>
             <div class="project-tags"><span>vLLM</span><span>FastAPI</span><span>SSE</span></div>
           </article>
           <article class="project-card reveal" style="--accent:#34d399">
             <div class="project-icon">🎯</div>
-            <h3>实时个性化推荐系统</h3>
-            <p>基于深度学习的推荐引擎，特征工程 + 双塔召回 + 精排三段式架构，上线后点击率提升 30%。</p>
-            <div class="project-tags"><span>PyTorch</span><span>特征工程</span><span>召回排序</span></div>
+            <h3 data-i18n="project4.title">Real-time Recommendation Engine</h3>
+            <p data-i18n="project4.desc">A deep learning recommendation system with feature engineering, dual-tower recall, and precision ranking. CTR improved 30% after launch.</p>
+            <div class="project-tags"><span>PyTorch</span><span>Feature Eng.</span><span>Ranking</span></div>
           </article>
           <article class="project-card reveal" style="--accent:#fbbf24">
             <div class="project-icon">🔁</div>
-            <h3>MLOps 训练流水线</h3>
-            <p>端到端的模型训练与部署平台，覆盖数据版本、分布式训练、实验追踪、灰度发布与线上监控。</p>
+            <h3 data-i18n="project5.title">MLOps Training Pipeline</h3>
+            <p data-i18n="project5.desc">End-to-end model training and deployment platform: data versioning, distributed training, experiment tracking, canary releases, and online monitoring.</p>
             <div class="project-tags"><span>MLflow</span><span>Kubeflow</span><span>Docker</span></div>
           </article>
           <article class="project-card reveal" style="--accent:#60a5fa">
             <div class="project-icon">🛠️</div>
-            <h3>高并发微服务后端</h3>
-            <p>Go + 微服务架构的核心业务后端，gRPC 通信、消息队列削峰填谷，稳定支撑千万级 DAU。</p>
+            <h3 data-i18n="project6.title">High-Concurrency Microservice Backend</h3>
+            <p data-i18n="project6.desc">Go-based microservice backend with gRPC and message-queue traffic smoothing. Stably serves tens of millions of DAU.</p>
             <div class="project-tags"><span>Go</span><span>gRPC</span><span>Kafka</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 联系 -->
+    <!-- contact -->
     <section id="contact" class="panel">
       <div class="container narrow">
-        <h2 class="section-title reveal"><span class="section-num">04</span>保持联系</h2>
-        <p class="contact-lead reveal">无论是合作邀约、技术交流，还是单纯打个招呼 —— 我的邮箱永远向你敞开。</p>
+        <h2 class="section-title reveal"><span class="section-num">04</span><span data-i18n="contact.title">Get in Touch</span></h2>
+        <p class="contact-lead reveal" data-i18n="contact.lead">Whether it's a collaboration, a technical discussion, or just a hello — my inbox is always open.</p>
         <div class="contact-actions reveal">
           <a class="btn btn-primary btn-lg" href="mailto:xiezherui99@gmail.com">✉️ xiezherui99@gmail.com</a>
         </div>
@@ -189,11 +190,12 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> Ray Xie · 用 ❤️ 打造 · 表面是水波着色器，底层是 Agent 与微服务</p>
+    <p>© <span id="year"></span> Ray Xie · <span data-i18n="footer.desc">Built with ❤️ · Water shaders on the surface, Agents &amp; microservices underneath</span></p>
   </footer>
 
-  <button id="back-top" aria-label="回到顶部">↑</button>
+  <button id="back-top" aria-label="Back to top">↑</button>
 
+  <script src="js/i18n.js" defer></script>
   <script type="module" src="js/water.js"></script>
   <script src="js/main.js" defer></script>
 </body>
