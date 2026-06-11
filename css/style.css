@@ -394,6 +394,15 @@ main { position: relative; z-index: 1; }
   transition: opacity 0.25s;
 }
 .project-link:hover { opacity: 1; }
+/* stretch the link to cover the whole card */
+.project-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+.project-card:has(.project-link) { cursor: pointer; }
 
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .project-tags span {
